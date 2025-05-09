@@ -1,4 +1,4 @@
-//MXB220041 - Mamoudou Balde
+
 public class Node {
     //The seat object associated with this node
     private Seat seat;

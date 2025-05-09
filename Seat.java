@@ -1,4 +1,4 @@
-//MXB220041 - Mamoudou Balde
+
 public class Seat {
     //Row number of the seat (1-indexed)
     private int row;

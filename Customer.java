@@ -1,4 +1,4 @@
-//MXB220041 - Mamoudou Balde
+
 import java.util.*;
 public class Customer {
     //Customer's username for login
