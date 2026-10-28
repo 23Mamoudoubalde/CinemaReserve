@@ -1,0 +1,114 @@
+:root {
+  --bg: #12131a;
+  --surface: #1c1e28;
+  --border: #2d3040;
+  --text: #ecedf3;
+  --muted: #9a9db0;
+  --accent: #f5b942;
+  --accent-text: #1a1406;
+  --open: #3a3e52;
+  --taken: #5b2a33;
+  --ok: #6fd39a;
+  --err: #ff8a8a;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); }
+h1, h2 { margin: 0 0 12px; }
+h2 { font-size: 1.1rem; }
+small, .muted { color: var(--muted); }
+
+button {
+  font: inherit; color: var(--text); background: var(--open); border: 1px solid var(--border);
+  border-radius: 8px; padding: 8px 14px; cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+button.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); font-weight: 600; }
+button.danger { background: transparent; color: var(--err); border-color: var(--err); }
+button.link { background: none; border: none; color: var(--muted); text-decoration: underline; padding: 0; }
+button.active { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+button.active small { color: inherit; }
+
+input, select {
+  font: inherit; width: 100%; padding: 8px 10px; margin-top: 4px; color: var(--text);
+  background: var(--bg); border: 1px solid var(--border); border-radius: 8px;
+}
+label { display: block; margin-bottom: 12px; font-size: 0.95rem; }
+
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+.error { color: var(--err); }
+.success { color: var(--ok); }
+
+/* Login */
+.login { min-height: 100vh; display: grid; place-items: center; padding: 16px; }
+.login form { width: min(360px, 100%); }
+.login button { width: 100%; }
+
+/* Layout */
+.app { max-width: 1100px; margin: 0 auto; padding: 16px; }
+.topbar { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-bottom: 16px; }
+.topbar h1 { font-size: 1.3rem; margin: 0; color: var(--accent); }
+.topbar nav { display: flex; gap: 8px; }
+.topbar .user { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+
+.booking { display: grid; grid-template-columns: 1fr 300px; gap: 16px; align-items: start; }
+@media (max-width: 800px) { .booking { grid-template-columns: 1fr; } }
+
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+
+/* Seat map */
+.seatmap { overflow-x: auto; }
+.screen {
+  margin: 0 auto 20px; width: 70%; text-align: center; font-size: 0.75rem; letter-spacing: 0.3em;
+  color: var(--muted); border-top: 3px solid var(--accent); border-radius: 50% 50% 0 0 / 12px 12px 0 0; padding-top: 6px;
+}
+.grid {
+  display: grid; grid-template-columns: 24px repeat(var(--cols), 28px); gap: 6px;
+  justify-content: center; align-items: center;
+}
+.col-label, .row-label { font-size: 0.75rem; color: var(--muted); text-align: center; }
+.seat { width: 28px; height: 26px; padding: 0; border-radius: 6px 6px 3px 3px; border: none; }
+.seat.open { background: var(--open); }
+.seat.open:hover { outline: 2px solid var(--accent); }
+.seat.taken { background: var(--taken); }
+.seat.picked { background: var(--accent); }
+.seat.clash { background: var(--err); }
+.legend { display: flex; gap: 16px; justify-content: center; margin-top: 16px; font-size: 0.85rem; color: var(--muted); }
+.legend .seat { display: inline-block; width: 14px; height: 12px; vertical-align: middle; margin-right: 4px; }
+
+/* Ticket panel */
+.panel .ticket { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.panel .ticket input { width: 72px; margin: 0; }
+.panel .primary { width: 100%; }
+.total { font-weight: 600; }
+.notice { margin-top: 12px; padding: 12px; border: 1px solid var(--accent); border-radius: 10px; }
+
+/* Orders */
+.receipt { max-width: 640px; }
+.order { border-top: 1px solid var(--border); padding: 14px 0; }
+.order header { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.order p { margin: 6px 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 8px 0; }
+.chips li { background: var(--open); border-radius: 999px; padding: 4px 4px 4px 10px; display: flex; gap: 4px; align-items: center; }
+.chips button { padding: 0 8px; border-radius: 999px; background: transparent; border: none; color: var(--muted); }
+.chips button:hover { color: var(--err); }
+.order-total { text-align: right; }
+
+/* Admin */
+.report-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.report-head div { display: flex; gap: 8px; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+th, td { padding: 10px; text-align: right; border-bottom: 1px solid var(--border); }
+th:first-child { text-align: left; }
+.total-row th, .total-row td { font-weight: 700; color: var(--accent); }
+
+/* Let the seat map scroll inside its card instead of widening the page */
+.booking > * { min-width: 0; }
+@media (max-width: 500px) {
+  .card { padding: 14px; }
+  .grid { grid-template-columns: 18px repeat(var(--cols), 20px); gap: 4px; justify-content: start; }
+  .seat { width: 20px; height: 19px; }
+}
